@@ -175,12 +175,11 @@
     <div class="toolbar">
       <input id="search" type="search" placeholder="Поиск: недвижимость, отказ, робот, цена..." />
       <button class="filter active" data-filter="all">Все</button>
-      <button class="filter" data-filter="Универсальное">Универсальное</button>
-      <button class="filter" data-filter="Аудит">Аудит</button>
-      <button class="filter" data-filter="Недвижимость">Недвижимость</button>
-      <button class="filter" data-filter="Возражение">Возражения</button>
-      <button class="filter" data-filter="Первое касание">Первое касание</button>
-      <button class="filter" data-filter="Созвон">Созвон</button>
+      <button class="filter" data-filter="Потерянные заявки">Потерянные заявки</button>
+      <button class="filter" data-filter="Через деньги">Через деньги</button>
+      <button class="filter" data-filter="Через аудит">Через аудит</button>
+      <button class="filter" data-filter="Через вопрос собственнику">Через вопрос собственнику</button>
+      <button class="filter" data-filter="Через клиентский путь">Через клиентский путь</button>
     </div>
   </header>
 
@@ -485,6 +484,36 @@
         button.innerText = "Скопировано";
         setTimeout(() => { button.innerText = old; }, 1200);
       });
+    });
+  </script>
+  <script>
+    document.querySelectorAll('.card').forEach((card) => {
+      if (!/TenChat|ТенЧат/i.test(card.textContent)) return;
+
+      const tags = (card.dataset.tags || '')
+        .split(/\s*\|\s*|\s*,\s*/)
+        .filter(Boolean)
+        .filter((tag) => !/TenChat|ТенЧат/i.test(tag));
+
+      if (!tags.includes('Потерянные заявки')) tags.push('Потерянные заявки');
+      card.dataset.tags = tags.join(' | ');
+
+      card.querySelectorAll('.tag').forEach((tag) => {
+        if (/TenChat|ТенЧат/i.test(tag.textContent)) {
+          tag.textContent = 'Потерянные заявки';
+        }
+      });
+
+      const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+      let textNode;
+      while ((textNode = walker.nextNode())) {
+        textNode.nodeValue = textNode.nodeValue
+          .replace(
+            /Самый сильный сценарий для\s*(TenChat|ТенЧат)/gi,
+            'Сценарий «Потерянные заявки»'
+          )
+          .replace(/TenChat|ТенЧат/gi, 'Потерянные заявки');
+      }
     });
   </script>
 </body>
