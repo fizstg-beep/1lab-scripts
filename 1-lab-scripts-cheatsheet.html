@@ -521,5 +521,61 @@
       }
     });
   </script>
+  <script>
+    (() => {
+      const filterButtons = [...document.querySelectorAll('.filter')];
+      const cards = [...document.querySelectorAll('.card')];
+      const searchInput = document.querySelector('input[type="search"], #search');
+      const selectedFilters = new Set();
+
+      const applyCombinedFilters = () => {
+        const query = (searchInput?.value || '').trim().toLowerCase();
+
+        cards.forEach((card) => {
+          const tags = (card.dataset.tags || '').toLowerCase();
+          const matchesTags = [...selectedFilters].every((filter) =>
+            tags.includes(filter.toLowerCase())
+          );
+          const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
+          card.hidden = !(matchesTags && matchesSearch);
+        });
+
+        filterButtons.forEach((button) => {
+          const filter = button.dataset.filter;
+          const isAll = filter === 'Все' || filter === 'all' || button.textContent.trim() === 'Все';
+          button.classList.toggle(
+            'active',
+            isAll ? selectedFilters.size === 0 : selectedFilters.has(filter)
+          );
+        });
+      };
+
+      document.addEventListener(
+        'click',
+        (event) => {
+          const button = event.target.closest('.filter');
+          if (!button) return;
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          const filter = button.dataset.filter;
+          if (filter === 'Все' || filter === 'all' || button.textContent.trim() === 'Все') {
+            selectedFilters.clear();
+          } else if (selectedFilters.has(filter)) {
+            selectedFilters.delete(filter);
+          } else {
+            selectedFilters.add(filter);
+          }
+
+          applyCombinedFilters();
+        },
+        true
+      );
+
+      searchInput?.addEventListener('input', applyCombinedFilters);
+      applyCombinedFilters();
+    })();
+  </script>
 </body>
 </html>
