@@ -177,6 +177,7 @@
       <button class="filter active" data-filter="all">Все</button>
       <button class="filter" data-filter="Универсальное">Универсальное</button>
       <button class="filter" data-filter="Недвижимость">Недвижимость</button>
+      <button class="filter" data-filter="Блогер">Блогер</button>
       <button class="filter" data-filter="Возражение">Возражения</button>
       <button class="filter" data-filter="Первое касание">Первое касание</button>
       <button class="filter" data-filter="Созвон">Созвон</button>
@@ -444,6 +445,28 @@
     </div>
 
     <div class="empty" id="empty">Ничего не найдено. Попробуйте другое слово.</div>
+    <article class="card" data-tags="Блогер | Первое касание | Партнёрское предложение">
+      <div class="card-header">
+        <h2>Блогер — партнёрское предложение</h2>
+        <div class="tags">
+          <span class="tag">Блогер</span>
+          <span class="tag">Первое касание</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="goal">Цель: предложить AI-помощника для обработки запросов подписчиков и рекламодателей по партнёрской модели.</p>
+        <pre class="script">Привет, [Имя]! Посмотрела твой блог: у тебя активная аудитория, и наверняка в директ приходят вопросы от подписчиков и рекламодателей.
+
+Мы можем бесплатно настроить AI-помощника, который:
+— выдаёт тренировку, чек-лист или гайд по кодовому слову;
+— отвечает рекламодателям: отправляет условия, цены, охваты и свободные даты.
+
+Воронка по кодовому слову помогает повышать охваты и увеличивать количество подписчиков. AI-помощник разгружает директ и помогает не терять рекламные запросы. Работаем по партнёрской программе, поэтому настройка AI-помощника для тебя бесплатна.
+
+Вам был бы интересен такой формат?</pre>
+        <button class="copy-btn" type="button">Скопировать</button>
+      </div>
+    </article>
   </main>
 
   <script>
@@ -575,6 +598,56 @@
 
       searchInput?.addEventListener('input', applyCombinedFilters);
       applyCombinedFilters();
+    })();
+  </script>
+  <script>
+    (() => {
+      const scenarioRules = [
+        {
+          label: 'Потерянные заявки',
+          pattern: /потерянные заявки|ни одна заявка|заявк\S*\s+(?:не\s+)?теря|остава\S* без ответа|теряет выручку/i
+        },
+        {
+          label: 'Через деньги',
+          pattern: /через деньги|сколько денег теря|точк\S* потери клиент|точк\S* роста|десятки тысяч|сотни тысяч/i
+        },
+        {
+          label: 'Через аудит',
+          pattern: /через аудит|голосов\S* разбор|коротк\S* разбор на 2 минут|потенциальн\S* мест/i
+        },
+        {
+          label: 'Через вопрос собственнику',
+          pattern: /через вопрос собственнику|какой показатель|больше заявок|выше конверсия|что сегодня сильнее всего мешает/i
+        },
+        {
+          label: 'Через клиентский путь',
+          pattern: /через клиентский путь|какой путь он проходит|до разговора с менеджером|именно на этом этапе чаще всего/i
+        }
+      ];
+
+      document.querySelectorAll('.card').forEach((card) => {
+        const text = card.textContent;
+
+        scenarioRules.forEach(({ label, pattern }) => {
+          if (!pattern.test(text)) return;
+
+          const currentTags = card.dataset.tags || '';
+          if (!currentTags.includes(label)) {
+            card.dataset.tags = `${currentTags} | ${label}`.replace(/^\s*\|\s*/, '');
+          }
+
+          const tagsContainer = card.querySelector('.tags');
+          const hasVisibleTag = [...card.querySelectorAll('.tag')]
+            .some((tag) => tag.textContent.trim() === label);
+
+          if (tagsContainer && !hasVisibleTag) {
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.textContent = label;
+            tagsContainer.appendChild(tag);
+          }
+        });
+      });
     })();
   </script>
 </body>
