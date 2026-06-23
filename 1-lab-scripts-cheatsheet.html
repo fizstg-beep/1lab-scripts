@@ -1,315 +1,331 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1-LAB — шпаргалка скриптов</title>
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-utAMYuZLHYhC0kBmpff8UDPRnsELeZveMaWmasMsbOzXF6_tfqB_4yQHBITHSNMCs8x3lGtkO51Wk12iqrMt7KmSO3rB_GPQpRmqNqanAZIl1x4JLGRz8lhto-5_PnVsivVaBZnqi5eyM6jl2qJyLOsNIRx0Iti9P8sRx_9ouYzD1yqr4nJx49vX7TOW_EUDGlubltJQ0t5CxRbgutV66FfMMfvTg_wAQ-cT7Slts1eZ6w4UrUhqiy4k2ElHhXYiSgGMMh3lgE3-1YFyx_5xg" charset="UTF-8"></script><style>
-    :root { --bg:#0b0f0d; --card:#151a17; --card2:#101411; --text:#f4f7f2; --muted:#a9b2a6; --line:rgba(190,255,0,.18); --accent:#b8ff00; --accent2:#d8ff59; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Arial,sans-serif; background:radial-gradient(circle at top right,rgba(184,255,0,.12),transparent 35%),var(--bg); color:var(--text); line-height:1.5; }
-    .page { width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:32px 0 60px; }
-    .hero { border:1px solid var(--line); background:linear-gradient(135deg,rgba(184,255,0,.09),rgba(255,255,255,.02)); border-radius:28px; padding:28px; margin-bottom:24px; }
-    h1 { font-size:clamp(32px,5vw,58px); line-height:.95; margin:0 0 14px; letter-spacing:-.04em; }
-    .subtitle { max-width:760px; color:var(--muted); font-size:17px; margin:0; }
-    .toolbar { position:sticky; top:0; z-index:10; backdrop-filter:blur(14px); background:rgba(11,15,13,.82); border:1px solid var(--line); border-radius:22px; padding:14px; margin-bottom:22px; }
-    .search { width:100%; border:1px solid rgba(255,255,255,.12); background:#070a08; color:var(--text); border-radius:14px; padding:13px 14px; font-size:16px; outline:none; margin-bottom:12px; }
-    .filters { display:flex; flex-wrap:wrap; gap:8px; }
-    .filter-btn,.copy-btn { border:1px solid rgba(184,255,0,.25); background:rgba(184,255,0,.08); color:var(--text); border-radius:999px; padding:9px 12px; cursor:pointer; font-size:14px; }
-    .filter-btn.active { background:var(--accent); color:#111; font-weight:700; }
-    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-    .card { border:1px solid var(--line); background:linear-gradient(180deg,var(--card),var(--card2)); border-radius:24px; padding:20px; min-height:260px; display:flex; flex-direction:column; gap:12px; }
-    .card-header { display:flex; flex-direction:column; gap:10px; }
-    h3 { margin:0; font-size:23px; letter-spacing:-.02em; }
-    .tags { display:flex; flex-wrap:wrap; gap:7px; }
-    .tag { color:#121212; background:var(--accent2); border-radius:999px; padding:4px 8px; font-size:12px; font-weight:700; }
-    .goal { color:var(--muted); margin:0; font-size:14px; }
-    .script-text { white-space:pre-wrap; background:#080b09; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; color:#eef3ea; font-size:15px; flex:1; }
-    .actions { display:flex; justify-content:flex-end; }
-    .copy-btn { background:var(--accent); color:#111; font-weight:700; border:none; }
-    .empty { display:none; color:var(--muted); text-align:center; padding:28px; border:1px dashed var(--line); border-radius:18px; margin-top:18px; }
-    @media (max-width:820px) { .grid{grid-template-columns:1fr;} .page{width:min(100% - 20px,1180px); padding-top:16px;} .hero{padding:20px; border-radius:20px;} .toolbar{border-radius:18px;} }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1-LAB — база скриптов с комплиментами</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=xR1oCt2O8UMwloQ4i6Ki0kP3OHgKaEgEE_jLm0r8RARWsLtUfGhCvFIJuC7CwHjrSQFNEoDQ_nfD_6516PQAe3eGv10IBhV0u2uUhDKbaBFTJxTc-g-8DFFOD6d3ujJe5KygCx6chJDiTkO66kjeZHtHHNaygFRV0DBrrNsKKwe3nmdfUYZncukWbZ2In72jouKRCg0L76jNCqRiDmekbPwyH-g_pykagW1E7lzuLwpGB3D5eHVlQ4f4NuCIX4lU6oyyePm4UrAI7WDZXwtspw" charset="UTF-8"></script><style>
+:root {
+  --bg:#0b0f0d; --card:#151c16; --card2:#0f140f; --text:#f4f7f2; --muted:#aab4a7;
+  --line:rgba(184,255,0,.20); --accent:#b8ff00; --accent2:#dfff5f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top right,rgba(184,255,0,.13),transparent 32%),var(--bg);color:var(--text);line-height:1.45}
+.page{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:26px 0 60px}
+.hero{border:1px solid var(--line);border-radius:26px;padding:26px;background:linear-gradient(135deg,rgba(184,255,0,.11),rgba(255,255,255,.025));margin-bottom:18px}
+h1{margin:0 0 10px;font-size:clamp(30px,5vw,56px);line-height:.98;letter-spacing:-.04em}
+.subtitle{margin:0;max-width:820px;color:var(--muted);font-size:16px}
+.example{border:1px solid rgba(184,255,0,.18);background:rgba(184,255,0,.06);border-radius:20px;padding:16px;margin-bottom:18px;color:#eef6ea}
+.example-title{font-weight:700;margin-bottom:8px;color:var(--accent2)}
+.toolbar{position:sticky;top:0;z-index:5;background:rgba(11,15,13,.88);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:18px}
+.search{width:100%;border:1px solid rgba(255,255,255,.12);background:#070a08;color:var(--text);border-radius:14px;padding:13px 14px;font-size:16px;outline:none;margin-bottom:12px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn,.copy-btn,.copy-compliment-btn{border:1px solid rgba(184,255,0,.28);background:rgba(184,255,0,.08);color:var(--text);border-radius:999px;padding:9px 12px;cursor:pointer;font-size:14px}
+.filter-btn.active{background:var(--accent);color:#111;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{border:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--card2));border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.card-header{display:flex;flex-direction:column;gap:10px}
+h3{margin:0;font-size:22px;letter-spacing:-.02em}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{color:#111;background:var(--accent2);border-radius:999px;padding:4px 8px;font-size:12px;font-weight:700}
+.goal{margin:0;color:var(--muted);font-size:14px}
+.compliment-preview{border:1px dashed rgba(184,255,0,.28);background:rgba(184,255,0,.055);border-radius:14px;padding:11px;color:#eaf7dd;font-size:14px}
+.script-text{white-space:pre-wrap;background:#080b09;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;color:#eef3ea;font-size:15px;flex:1}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.copy-btn{background:var(--accent);color:#111;border:none;font-weight:700}
+.copy-compliment-btn{background:transparent;color:var(--accent2)}
+.empty{display:none;margin-top:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:18px;padding:26px}
+@media(max-width:820px){.page{width:min(100% - 18px,1180px);padding-top:14px}.hero{border-radius:20px;padding:20px}.grid{grid-template-columns:1fr}.toolbar{border-radius:18px}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <h1>1-LAB — шпаргалка скриптов</h1>
-      <p class="subtitle">Готовые сообщения для первого касания, диагностики, отработки возражений и выхода на созвон. Используй как основу и адаптируй под клиента.</p>
-    </section>
+<main class="page">
+<section class="hero">
+<h1>1-LAB — база скриптов</h1>
+<p class="subtitle">Скрипты для первого касания, диагностики, повторных касаний, выхода на ЛПР и созвон. У каждой карточки есть две кнопки: обычное копирование и копирование с комплиментом.</p>
+</section>
+<section class="example">
+<div class="example-title">Как это будет выглядеть</div>
+<div>В карточке будет основной текст, отдельная строка «Комплимент» и две кнопки: <b>«Скопировать»</b> и <b>«С комплиментом»</b>. Если нажать «С комплиментом», в буфер попадёт сначала комплимент, затем сам скрипт.</div>
+</section>
+<section class="toolbar">
+<input class="search" id="searchInput" type="search" placeholder="Поиск: недвижимость, стоматологии, вручную, автоматизировано, ЛПР...">
+<div class="filters"><button class="filter-btn active" data-filter="Все">Все</button><button class="filter-btn " data-filter="Универсальное">Универсальное</button><button class="filter-btn " data-filter="Недвижимость">Недвижимость</button><button class="filter-btn " data-filter="Коммерческая недвижимость">Коммерческая недвижимость</button><button class="filter-btn " data-filter="Стоматологии">Стоматологии</button><button class="filter-btn " data-filter="Блогер">Блогер</button><button class="filter-btn " data-filter="TenChat">TenChat</button><button class="filter-btn " data-filter="Первое касание">Первое касание</button><button class="filter-btn " data-filter="Если вручную">Если вручную</button><button class="filter-btn " data-filter="Если автоматизировано">Если автоматизировано</button><button class="filter-btn " data-filter="Повторные касания">Повторные касания</button><button class="filter-btn " data-filter="Не ЛПР">Не ЛПР</button><button class="filter-btn " data-filter="Возражение">Возражение</button><button class="filter-btn " data-filter="Созвон">Созвон</button></div>
+</section>
+<section class="grid" id="cardsGrid">
 
-    <section class="toolbar">
-      <input class="search" id="searchInput" type="search" placeholder="Поиск по скриптам: недвижимость, блогер, возражение, заявка..." />
-      <div class="filters">
-        <button class="filter-btn active" data-filter="Все">Все</button>
-        <button class="filter-btn" data-filter="Универсальное">Универсальное</button>
-        <button class="filter-btn" data-filter="Недвижимость">Недвижимость</button>
-        <button class="filter-btn" data-filter="Блогер">Блогер</button>
-        <button class="filter-btn" data-filter="Амбассадор">Амбассадор</button>
-        <button class="filter-btn" data-filter="Возражение">Возражение</button>
-        <button class="filter-btn" data-filter="Первое касание">Первое касание</button>
-        <button class="filter-btn" data-filter="Созвон">Созвон</button>
-        <button class="filter-btn" data-filter="Потерянные заявки">Потерянные заявки</button>
-        <button class="filter-btn" data-filter="Рекомендация">Рекомендация</button>
-        <button class="filter-btn" data-filter="Деньги">Через деньги</button>
-        <button class="filter-btn" data-filter="Аудит">Через аудит</button>
-        <button class="filter-btn" data-filter="ЛПР">Через вопрос собственнику</button>
-        <button class="filter-btn" data-filter="Клиентский путь">Через клиентский путь</button>
-        <button class="filter-btn" data-filter="TenChat">TenChat</button>
-      </div>
-    </section>
+<article class="card" data-tags="Универсальное Первое касание Автоматизация" data-compliment="Видно, что у вас уже есть выстроенная коммуникация с клиентами, поэтому вопрос как раз по этому процессу.">
+  <div class="card-header">
+    <h3>Универсальное — заявки вручную или автоматизированы</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Первое</span><span class="tag">касание</span><span class="tag">Автоматизация</span></div>
+  </div>
+  <p class="goal">Короткое первое касание для любой ниши.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Видно, что у вас уже есть выстроенная коммуникация с клиентами, поэтому вопрос как раз по этому процессу.</div>
+  <div class="script-text">Добрый вечер.
 
-    <section class="grid" id="cardsGrid">
-      <article class="card" data-tags="Универсальное Первое касание">
-        <div class="card-header">
-          <h3>Универсальное — первое касание</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Первое касание</span>
-          </div>
-        </div>
-        <p class="goal">Цель: подходит почти для любой ниши, когда нужно начать диагностику без продажи в лоб.</p>
-        <div class="script-text">Добрый вечер. У меня вопрос по обработке клиентских обращений.
+Подскажите, у вас заявки с сайта и из мессенджеров сейчас менеджер вручную обрабатывает или часть уже автоматизирована?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-Подскажите, пожалуйста, у вас первичные заявки и сообщения сейчас вручную обрабатываются?
+<article class="card" data-tags="Универсальное Если вручную Повторные касания" data-compliment="Спасибо, что уточнили. Видно, что процесс у вас уже есть, вопрос скорее в том, можно ли снять с команды часть рутины.">
+  <div class="card-header">
+    <h3>Универсальное — если ответили «вручную»</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Если</span><span class="tag">вручную</span><span class="tag">Повторные</span><span class="tag">касания</span></div>
+  </div>
+  <p class="goal">Продолжение после ответа, что заявки обрабатываются вручную.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо, что уточнили. Видно, что процесс у вас уже есть, вопрос скорее в том, можно ли снять с команды часть рутины.</div>
+  <div class="script-text">Поняла.
 
-Если да, было бы для вас актуально частично разгрузить себя или менеджеров от первичной рутины, чтобы больше времени уделять более важным делам?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Потерянные заявки">
-        <div class="card-header">
-          <h3>Потерянные заявки — первое сообщение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Потерянные заявки</span>
-          </div>
-        </div>
-        <p class="goal">Когда использовать: есть входящие обращения, реклама, менеджеры или несколько каналов связи.</p>
-        <div class="script-text">[Имя], добрый день. Обратила внимание на вашу компанию и возник вопрос по входящим обращениям.
+Тогда здесь как раз может быть полезна автоматизация части первичных ответов и повторных касаний, чтобы менеджеры не тратили время на однотипную ручную обработку и могли больше заниматься уже тёплыми клиентами.
+
+У вас такой вариант уже обсуждали внутри?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Если автоматизировано Диагностика" data-compliment="Отлично, значит у вас уже достаточно системно выстроен процесс обработки обращений.">
+  <div class="card-header">
+    <h3>Универсальное — если всё автоматизировано</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Если</span><span class="tag">автоматизировано</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Проверяем слабое место: вечер, ночь, выходные.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Отлично, значит у вас уже достаточно системно выстроен процесс обработки обращений.</div>
+  <div class="script-text">Поняла, спасибо.
+
+Тогда у вас уже хорошо выстроен процесс.
+
+Подскажите, а обращения, которые приходят вечером, ночью или в выходные, тоже автоматически обрабатываются и доводятся до следующего шага?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Если автоматизировано Диагностика" data-compliment="Хорошо, что у вас уже есть автоматизация — не все компании доходят даже до этого этапа.">
+  <div class="card-header">
+    <h3>Универсальное — автоответ или реальная обработка</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Если</span><span class="tag">автоматизировано</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Разделить автоответ и полноценную AI-обработку.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Хорошо, что у вас уже есть автоматизация — не все компании доходят даже до этого этапа.</div>
+  <div class="script-text">Поняла, спасибо.
+
+Тогда уточню ещё один момент: обращения, которые приходят вне рабочего времени, у вас просто получают автоответ или реально квалифицируются и передаются дальше в работу?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Не ЛПР Контакт ЛПР" data-compliment="Спасибо за ответ. Понимаю, что не всегда такие вопросы находятся у одного человека в зоне ответственности.">
+  <div class="card-header">
+    <h3>Универсальное — не ЛПР / кому адресовать</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Не</span><span class="tag">ЛПР</span><span class="tag">Контакт</span><span class="tag">ЛПР</span></div>
+  </div>
+  <p class="goal">Мягко перейти к нужному человеку внутри компании.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо за ответ. Понимаю, что не всегда такие вопросы находятся у одного человека в зоне ответственности.</div>
+  <div class="script-text">Поняла, спасибо.
+
+Подскажите, пожалуйста, кто у вас обычно отвечает за такие решения внутри компании? Я тогда лучше адресно напишу по теме обработки обращений и повторных касаний.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Не ЛПР Контакт ЛПР" data-compliment="Спасибо, что ответили. Не хочу отвлекать вас лишними деталями, если вопрос не к вам.">
+  <div class="card-header">
+    <h3>Универсальное — не зона ответственности</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Не</span><span class="tag">ЛПР</span><span class="tag">Контакт</span><span class="tag">ЛПР</span></div>
+  </div>
+  <p class="goal">Если собеседник не отвечает за автоматизацию.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо, что ответили. Не хочу отвлекать вас лишними деталями, если вопрос не к вам.</div>
+  <div class="script-text">Понимаю, что такие решения, возможно, не в вашей зоне ответственности.
+
+Подскажите, кому лучше адресовать эту информацию внутри компании?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Не ЛПР Автоматизация" data-compliment="Спасибо за ответ. Видно, что в компании есть структура, поэтому хочу корректно адресовать вопрос.">
+  <div class="card-header">
+    <h3>Универсальное — кому обсудить автоматизацию</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Не</span><span class="tag">ЛПР</span><span class="tag">Автоматизация</span></div>
+  </div>
+  <p class="goal">Попросить контакт ответственного за продажи или процессы.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо за ответ. Видно, что в компании есть структура, поэтому хочу корректно адресовать вопрос.</div>
+  <div class="script-text">Поняла, спасибо.
+
+Тогда подскажите, пожалуйста, с кем внутри компании лучше обсудить вопрос автоматизации обработки входящих обращений: с руководителем отдела продаж, операционным руководителем или тем, кто отвечает за клиентский сервис и процессы?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Потерянные заявки Первое касание" data-compliment="Понравилось, что у вас понятно представлена услуга и есть несколько каналов для связи с клиентами.">
+  <div class="card-header">
+    <h3>Универсальное — через потерянные заявки</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Потерянные</span><span class="tag">заявки</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">Первое сообщение через контроль входящих заявок.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Понравилось, что у вас понятно представлена услуга и есть несколько каналов для связи с клиентами.</div>
+  <div class="script-text">[Имя], добрый день. Обратила внимание на вашу компанию и возник вопрос по входящим обращениям.
 
 Как вы сейчас контролируете, чтобы ни одна заявка не оставалась без ответа?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Диагностика">
-        <div class="card-header">
-          <h3>Потерянные заявки — продолжение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">Отправлять только после ответа клиента. Не обвиняем сотрудников.</p>
-        <div class="script-text">Поняла. Часто обращения теряются не из-за сотрудников, а из-за нагрузки: клиенту отвечают позже, забывают вернуться или не успевают обработать все каналы.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-У вас бывает, что часть обращений дожидается ответа дольше обычного?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Созвон">
-        <div class="card-header">
-          <h3>Потерянные заявки — следующий шаг</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Созвон</span>
-          </div>
-        </div>
-        <p class="goal">Переход к разбору только после подтверждения боли.</p>
-        <div class="script-text">Могу на коротком созвоне показать типовые точки, где обращения чаще всего зависают, и вместе проверить, есть ли они в вашем процессе.
-
-Удобнее завтра до обеда или во второй половине дня?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Деньги">
-        <div class="card-header">
-          <h3>Через деньги — первое сообщение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Деньги</span>
-          </div>
-        </div>
-        <p class="goal">Подходит компаниям с платной рекламой, дорогим лидом или высоким средним чеком.</p>
-        <div class="script-text">[Имя], добрый день. Возник вопрос по обработке входящих обращений.
-
-Считаете ли вы сейчас, сколько заявок не доходит до консультации или сделки из-за долгого первого ответа?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Диагностика">
-        <div class="card-header">
-          <h3>Через деньги — продолжение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">Не называем чужие потери без расчёта. Переводим разговор к цифрам клиента.</p>
-        <div class="script-text">Спрашиваю потому, что даже несколько необработанных обращений могут заметно влиять на выручку, особенно при дорогой рекламе или высоком чеке.
-
-Подскажите, сколько примерно входящих заявок у вас бывает за месяц?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Аудит">
-        <div class="card-header">
-          <h3>Через мини-аудит</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Аудит</span>
-          </div>
-        </div>
-        <p class="goal">Использовать только после реального просмотра сайта, соцсетей или клиентского пути.</p>
-        <div class="script-text">[Имя], добрый день. Посмотрела ваш сайт и каналы связи и заметила несколько моментов в пути клиента, которые стоит проверить.
-
-Если актуально, могу записать короткий голосовой разбор на 2 минуты. Отправить?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное ЛПР">
-        <div class="card-header">
-          <h3>Вопрос собственнику</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">ЛПР</span>
-          </div>
-        </div>
-        <p class="goal">Лучше использовать, когда точно пишем собственнику или руководителю.</p>
-        <div class="script-text">[Имя], добрый день. Подскажите, какая задача сейчас для вас приоритетнее:
-
-1. получать больше заявок;
-2. повышать конверсию;
-3. быстрее обрабатывать обращения;
-4. снижать ручную нагрузку на команду?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Диагностика">
-        <div class="card-header">
-          <h3>Вопрос собственнику — продолжение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">После выбора приоритета выясняем реальное препятствие.</p>
-        <div class="script-text">Поняла. А что сейчас сильнее всего мешает улучшить этот показатель?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Клиентский путь">
-        <div class="card-header">
-          <h3>Через клиентский путь</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Клиентский путь</span>
-          </div>
-        </div>
-        <p class="goal">Помогает понять, кто принимает обращение и как оно доходит до менеджера.</p>
-        <div class="script-text">[Имя], добрый день. Возник вопрос по вашему клиентскому пути.
+<article class="card" data-tags="Универсальное Клиентский путь Диагностика" data-compliment="У вас достаточно аккуратно выстроена подача для клиента, поэтому интересно понять сам путь обращения.">
+  <div class="card-header">
+    <h3>Универсальное — через клиентский путь</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Клиентский</span><span class="tag">путь</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Понять путь клиента от обращения до менеджера.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас достаточно аккуратно выстроена подача для клиента, поэтому интересно понять сам путь обращения.</div>
+  <div class="script-text">[Имя], добрый день. Возник вопрос по вашему клиентскому пути.
 
 Если потенциальный клиент обращается к вам прямо сейчас, какие этапы он проходит до разговора с менеджером?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Диагностика">
-        <div class="card-header">
-          <h3>Клиентский путь — продолжение</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">Усиливаем только релевантную боль, а не заявляем, что клиент уже теряет заявки.</p>
-        <div class="script-text">Спасибо, поняла. Именно между первым обращением и подключением менеджера чаще всего возникают задержки или теряются повторные касания.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-Как вы контролируете этот этап, когда обращений становится больше?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="TenChat Первое касание">
-        <div class="card-header">
-          <h3>TenChat — сообщение 1</h3>
-          <div class="tags">
-            <span class="tag">TenChat</span>
-            <span class="tag">Первое касание</span>
-          </div>
-        </div>
-        <p class="goal">Короткий вход через контроль заявок. Персонализируй первым предложением.</p>
-        <div class="script-text">[Имя], добрый день. Посмотрела вашу компанию и возник вопрос.
+<article class="card" data-tags="Универсальное Деньги Диагностика" data-compliment="Видно, что вы вкладываетесь в привлечение клиентов, поэтому вопрос именно про эффективность обработки входящих обращений.">
+  <div class="card-header">
+    <h3>Универсальное — через деньги</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Деньги</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Для компаний с рекламой, дорогим лидом или высоким чеком.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Видно, что вы вкладываетесь в привлечение клиентов, поэтому вопрос именно про эффективность обработки входящих обращений.</div>
+  <div class="script-text">[Имя], добрый день. Возник вопрос по обработке входящих обращений.
+
+Считаете ли вы сейчас, сколько заявок не доходит до консультации или сделки из-за долгого первого ответа?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Аудит Первое касание" data-compliment="Посмотрела ваши каналы — видно, что над упаковкой и доверием к компании уже работаете.">
+  <div class="card-header">
+    <h3>Универсальное — через мини-аудит</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Аудит</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">После просмотра сайта, соцсетей или карточки компании.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Посмотрела ваши каналы — видно, что над упаковкой и доверием к компании уже работаете.</div>
+  <div class="script-text">[Имя], добрый день. Посмотрела ваш сайт и каналы связи и заметила несколько моментов в пути клиента, которые стоит проверить.
+
+Если актуально, могу записать короткий голосовой разбор на 2 минуты. Отправить?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Универсальное Созвон" data-compliment="По вашему процессу уже видно, что есть что обсудить предметно, без общей презентации.">
+  <div class="card-header">
+    <h3>Универсальное — выход на созвон</h3>
+    <div class="tags"><span class="tag">Универсальное</span><span class="tag">Созвон</span></div>
+  </div>
+  <p class="goal">Короткий диагностический звонок вместо продажи в переписке.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> По вашему процессу уже видно, что есть что обсудить предметно, без общей презентации.</div>
+  <div class="script-text">Можем созвониться на 10–15 минут: я задам пару вопросов по вашему процессу и скажу, есть ли смысл это рассматривать именно для вас.
+
+Вам удобнее сегодня ближе к вечеру или завтра в первой половине дня?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="TenChat Первое касание" data-compliment="У вас хорошо оформлен профиль, сразу понятно направление и экспертность.">
+  <div class="card-header">
+    <h3>TenChat — первое касание</h3>
+    <div class="tags"><span class="tag">TenChat</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">Короткий вход через контроль заявок.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас хорошо оформлен профиль, сразу понятно направление и экспертность.</div>
+  <div class="script-text">[Имя], добрый день. Посмотрела вашу компанию и возник вопрос.
 
 Как вы сейчас контролируете, чтобы ни одна входящая заявка не терялась?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="TenChat Диагностика">
-        <div class="card-header">
-          <h3>TenChat — сообщение 2</h3>
-          <div class="tags">
-            <span class="tag">TenChat</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">Отправлять после содержательного ответа.</p>
-        <div class="script-text">Поняла. Часто часть обращений теряется не из-за отсутствия клиентов, а из-за задержки первого ответа, нагрузки менеджеров или пропущенных повторных касаний.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="TenChat Диагностика" data-compliment="Спасибо, стало понятнее. Видно, что процесс уже есть, вопрос скорее в точках, где может быть ручная нагрузка.">
+  <div class="card-header">
+    <h3>TenChat — диагностика после ответа</h3>
+    <div class="tags"><span class="tag">TenChat</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Отправлять после содержательного ответа.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо, стало понятнее. Видно, что процесс уже есть, вопрос скорее в точках, где может быть ручная нагрузка.</div>
+  <div class="script-text">Поняла. Часто часть обращений теряется не из-за отсутствия клиентов, а из-за задержки первого ответа, нагрузки менеджеров или пропущенных повторных касаний.
 
 У вас какой из этих этапов сейчас требует больше всего ручного контроля?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="TenChat Созвон">
-        <div class="card-header">
-          <h3>TenChat — сообщения 3–4</h3>
-          <div class="tags">
-            <span class="tag">TenChat</span>
-            <span class="tag">Созвон</span>
-          </div>
-        </div>
-        <p class="goal">Сначала получаем согласие на разбор, затем предлагаем два времени.</p>
-        <div class="script-text">Могу на коротком созвоне показать несколько типовых точек потери обращений и вместе проверить ваш процесс.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="TenChat Созвон" data-compliment="У вас ниша как раз такая, где даже небольшая оптимизация обработки обращений может дать заметный эффект.">
+  <div class="card-header">
+    <h3>TenChat — выход на созвон</h3>
+    <div class="tags"><span class="tag">TenChat</span><span class="tag">Созвон</span></div>
+  </div>
+  <p class="goal">Сначала согласие на разбор, затем два времени.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас ниша как раз такая, где даже небольшая оптимизация обработки обращений может дать заметный эффект.</div>
+  <div class="script-text">Могу на коротком созвоне показать несколько типовых точек потери обращений и вместе проверить ваш процесс.
 
 Если увидим реальную задачу, обсудим решение. Если нет — так и зафиксируем.
 
 Удобнее завтра в 11:00 или в 16:00?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Универсальное Первое касание Рекомендация">
-        <div class="card-header">
-          <h3>Через рекомендацию — универсально</h3>
-          <div class="tags">
-            <span class="tag">Универсальное</span>
-            <span class="tag">Первое касание</span>
-            <span class="tag">Рекомендация</span>
-          </div>
-        </div>
-        <p class="goal">Цель: написать контакту, которого передали через знакомого, без давления и без продажи в лоб.</p>
-        <div class="script-text">Добрый день! Ваш контакт мне передали как человеку, который может быть вовлечён в обработку обращений, клиентский сервис или продажи.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-Мы внедряем AI-помощников, которые принимают обращения из разных каналов, отвечают на типовые вопросы, уточняют запрос, фиксируют данные и делают повторные касания.
+<article class="card" data-tags="Недвижимость Первое касание" data-compliment="Понравилось, как у вас поданы объекты и сама коммуникация с клиентами — видно, что работаете с вниманием к деталям.">
+  <div class="card-header">
+    <h3>Недвижимость — первое касание</h3>
+    <div class="tags"><span class="tag">Недвижимость</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">Получить ответ без продажи AI в лоб.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Понравилось, как у вас поданы объекты и сама коммуникация с клиентами — видно, что работаете с вниманием к деталям.</div>
+  <div class="script-text">[Имя], добрый день. Нашла ваш контакт в [источник].
 
-Сотруднику передаётся уже более подготовленная заявка, а команда тратит меньше времени на первичную рутину.
-
-Помощник не заменяет менеджера, а освобождает его время для общения с клиентами, переговоров и сделок.
-
-Предусмотрена гарантия результата на 30 дней, чтобы можно было оценить пользу на реальном процессе.
-
-Подскажите, у вас этот этап сейчас ведётся вручную и актуально ли частично его автоматизировать?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Недвижимость Первое касание">
-        <div class="card-header">
-          <h3>Недвижимость — первое касание</h3>
-          <div class="tags">
-            <span class="tag">Недвижимость</span>
-            <span class="tag">Первое касание</span>
-          </div>
-        </div>
-        <p class="goal">Цель: получить ответ, не продавать AI в лоб.</p>
-        <div class="script-text">[Имя], добрый день. Нашла ваш контакт в [источник].
 У меня вопрос по обработке клиентских обращений.
 
 Подскажите, пожалуйста, первичные заявки и сообщения сейчас вручную обрабатываются?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Недвижимость Первое касание Рекомендация">
-        <div class="card-header">
-          <h3>Недвижимость — через рекомендацию</h3>
-          <div class="tags">
-            <span class="tag">Недвижимость</span>
-            <span class="tag">Первое касание</span>
-            <span class="tag">Рекомендация</span>
-          </div>
-        </div>
-        <p class="goal">Цель: зайти через переданный контакт и показать пользу AI-помощника для брокеров, агентств и отделов продаж.</p>
-        <div class="script-text">Добрый день! Ваш контакт мне передали как человеку, который может быть вовлечён в обработку обращений и продажи в недвижимости.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Недвижимость Рекомендация Первое касание" data-compliment="Видно, что у вас серьёзный подход к работе с клиентами и объектами, поэтому вопрос именно по первичной коммуникации.">
+  <div class="card-header">
+    <h3>Недвижимость — через рекомендацию</h3>
+    <div class="tags"><span class="tag">Недвижимость</span><span class="tag">Рекомендация</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">Зайти через переданный контакт.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Видно, что у вас серьёзный подход к работе с клиентами и объектами, поэтому вопрос именно по первичной коммуникации.</div>
+  <div class="script-text">Добрый день! Ваш контакт мне передали как человеку, который может быть вовлечён в обработку обращений и продажи в недвижимости.
 
 Мы внедряем AI-помощников для недвижимости. Они могут принимать обращения из разных каналов, отвечать на первичные вопросы клиентов, уточнять запрос, фиксировать данные и делать повторные касания.
 
@@ -320,32 +336,36 @@
 Предусмотрена гарантия результата на 30 дней, чтобы оценить пользу на реальном процессе.
 
 Подскажите, у вас этот этап сейчас ведётся вручную и актуально ли частично его автоматизировать?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Недвижимость Диагностика">
-        <div class="card-header">
-          <h3>Если ответили: “да, вручную”</h3>
-          <div class="tags">
-            <span class="tag">Недвижимость</span>
-            <span class="tag">Диагностика</span>
-          </div>
-        </div>
-        <p class="goal">Цель: усилить боль через скорость и потерю клиента.</p>
-        <div class="script-text">Поняла. В недвижимости часто бывает, что клиент пишет сразу в несколько агентств, и скорость первого ответа влияет на то, останется он в диалоге или уйдёт дальше.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Недвижимость Если вручную Диагностика" data-compliment="Спасибо, что уточнили. В недвижимости скорость и качество первого контакта действительно сильно влияют на дальнейший диалог.">
+  <div class="card-header">
+    <h3>Недвижимость — если вручную</h3>
+    <div class="tags"><span class="tag">Недвижимость</span><span class="tag">Если</span><span class="tag">вручную</span><span class="tag">Диагностика</span></div>
+  </div>
+  <p class="goal">Усилить боль через скорость ответа.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо, что уточнили. В недвижимости скорость и качество первого контакта действительно сильно влияют на дальнейший диалог.</div>
+  <div class="script-text">Поняла. В недвижимости часто бывает, что клиент пишет сразу в несколько агентств, и скорость первого ответа влияет на то, останется он в диалоге или уйдёт дальше.
 
 А как у вас сейчас контролируется, чтобы обращения вечером, в выходные или при загрузке менеджеров не зависали без ответа?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Недвижимость Возражение">
-        <div class="card-header">
-          <h3>Возражение: “робот не подходит”</h3>
-          <div class="tags">
-            <span class="tag">Недвижимость</span>
-            <span class="tag">Возражение</span>
-          </div>
-        </div>
-        <p class="goal">Цель: снять страх “робота”, оставить живое общение.</p>
-        <div class="script-text">Понимаю вас. Для недвижимости, особенно бизнес-класса, грубая роботизация действительно не подходит.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Недвижимость Возражение AI" data-compliment="Вы правильно смотрите на вопрос качества коммуникации — в недвижимости это действительно критично.">
+  <div class="card-header">
+    <h3>Недвижимость — робот не подходит</h3>
+    <div class="tags"><span class="tag">Недвижимость</span><span class="tag">Возражение</span><span class="tag">AI</span></div>
+  </div>
+  <p class="goal">Снять страх, что AI заменит брокера.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Вы правильно смотрите на вопрос качества коммуникации — в недвижимости это действительно критично.</div>
+  <div class="script-text">Понимаю вас. Для недвижимости, особенно в сегменте с дорогими объектами, грубая роботизация действительно не подходит.
 
 Я не про замену живого общения. Речь про AI-помощника 24/7, который принимает первое обращение, уточняет базовые вводные и передаёт менеджеру уже подготовленного клиента.
 
@@ -354,59 +374,170 @@
 После запуска предусмотрена гарантия 30 дней, условия фиксируем заранее.
 
 Можем коротко обсудить в звонке, есть ли у вас здесь точка для усиления?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Возражение Отказ">
-        <div class="card-header">
-          <h3>Если ответили: “не актуально”</h3>
-          <div class="tags">
-            <span class="tag">Возражение</span>
-            <span class="tag">Отказ</span>
-          </div>
-        </div>
-        <p class="goal">Цель: не спорить, оставить дверь открытой.</p>
-        <div class="script-text">[Имя], поняла вас, спасибо.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-Тогда оставлю этот вопрос на будущее. Если позже станет актуально снизить ручную нагрузку по первичным обращениям или не терять заявки в нерабочее время, можно будет вернуться к обсуждению.</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Возражение Цена">
-        <div class="card-header">
-          <h3>Если спросили: “цены какие?”</h3>
-          <div class="tags">
-            <span class="tag">Возражение</span>
-            <span class="tag">Цена</span>
-          </div>
-        </div>
-        <p class="goal">Цель: не назвать цену в пустоту, привязать к сценарию.</p>
-        <div class="script-text">Цена зависит от сценария: какие каналы подключаем, сколько обращений нужно обрабатывать и что должен делать AI-помощник.
+<article class="card" data-tags="Коммерческая недвижимость Повторные касания" data-compliment="У вас ниша, где клиентский путь обычно длиннее, и это как раз требует аккуратной работы с повторными касаниями.">
+  <div class="card-header">
+    <h3>Коммерческая недвижимость — повторные касания</h3>
+    <div class="tags"><span class="tag">Коммерческая</span><span class="tag">недвижимость</span><span class="tag">Повторные</span><span class="tag">касания</span></div>
+  </div>
+  <p class="goal">AI в длинном цикле сделки до показа.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас ниша, где клиентский путь обычно длиннее, и это как раз требует аккуратной работы с повторными касаниями.</div>
+  <div class="script-text">Поняла.
 
-Чтобы не называть абстрактно, лучше коротко понять вашу задачу: вам актуальнее скорость первого ответа, повторные касания или запись клиента на консультацию/показ?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Созвон">
-        <div class="card-header">
-          <h3>Выход на созвон</h3>
-          <div class="tags">
-            <span class="tag">Созвон</span>
-          </div>
-        </div>
-        <p class="goal">Цель: короткий диагностический звонок, не презентация.</p>
-        <div class="script-text">Можем созвониться на 10-15 минут: я задам пару вопросов по вашему процессу и скажу, есть ли смысл это рассматривать именно для вас.
+В коммерческой недвижимости это важный этап: клиент может параллельно смотреть несколько объектов, переносить показ или возвращаться к вопросу не сразу.
 
-Вам удобнее сегодня ближе к вечеру или завтра в первой половине дня?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Блогер Первое касание">
-        <div class="card-header">
-          <h3>Блогер — партнёрское предложение</h3>
-          <div class="tags">
-            <span class="tag">Блогер</span>
-            <span class="tag">Первое касание</span>
-          </div>
-        </div>
-        <p class="goal">Цель: предложить AI-помощника для обработки запросов подписчиков и рекламодателей по партнёрской модели.</p>
-        <div class="script-text">Привет, [Имя]! Посмотрела твой блог: у тебя активная аудитория, и наверняка в директ приходят вопросы от подписчиков и рекламодателей.
+Часть таких повторных касаний можно автоматизировать: напоминания, уточнение актуальности запроса, возврат к подборке и передача брокеру уже более тёплого клиента.
+
+Подскажите, у вас такой формат уже рассматривали?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Коммерческая недвижимость Презентация решения" data-compliment="В коммерческой недвижимости особенно ценен системный догрев клиента, и здесь у вас как раз может быть точка роста.">
+  <div class="card-header">
+    <h3>Коммерческая недвижимость — презентация решения</h3>
+    <div class="tags"><span class="tag">Коммерческая</span><span class="tag">недвижимость</span><span class="tag">Презентация</span><span class="tag">решения</span></div>
+  </div>
+  <p class="goal">Объяснить роль AI между первым контактом и показом.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> В коммерческой недвижимости особенно ценен системный догрев клиента, и здесь у вас как раз может быть точка роста.</div>
+  <div class="script-text">Тогда здесь может быть полезен AI-ассистент для первичной коммуникации и повторных касаний до показа.
+
+Он может автоматически возвращать клиента в диалог, уточнять, актуален ли ещё запрос, напоминать о подборке или показе и передавать брокеру уже более тёплого клиента.
+
+То есть не вместо брокера, а чтобы снять с него часть ручного догрева и не терять клиентов между первым обращением и показом.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Коммерческая недвижимость Выгода брокеру Повторные касания" data-compliment="Видно, что у вас работа строится вокруг качества контакта с клиентом, а не просто вокруг количества заявок.">
+  <div class="card-header">
+    <h3>Коммерческая недвижимость — через выгоду брокеру</h3>
+    <div class="tags"><span class="tag">Коммерческая</span><span class="tag">недвижимость</span><span class="tag">Выгода</span><span class="tag">брокеру</span><span class="tag">Повторные</span><span class="tag">касания</span></div>
+  </div>
+  <p class="goal">Акцент на разгрузке брокера.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Видно, что у вас работа строится вокруг качества контакта с клиентом, а не просто вокруг количества заявок.</div>
+  <div class="script-text">Идея в том, чтобы не нагружать брокера повторяющимися касаниями вручную.
+
+AI-ассистент может сам напомнить о подборке или показе, уточнить, актуален ли запрос, вернуть клиента в диалог и передать брокеру уже более подготовленный контакт.
+
+За счёт этого меньше обращений теряется между первым запросом и показом, а у брокера остаётся больше времени на переговоры и сами сделки.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Первое касание Клиники" data-compliment="Понравилось, как у вас выстроена подача услуг и доверительный тон коммуникации с пациентами.">
+  <div class="card-header">
+    <h3>Стоматологии — первое касание</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Первое</span><span class="tag">касание</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">Заход через перегруз администраторов.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Понравилось, как у вас выстроена подача услуг и доверительный тон коммуникации с пациентами.</div>
+  <div class="script-text">Добрый вечер.
+
+В стоматологиях администраторы часто одновременно ведут запись, отвечают на звонки и сообщения и встречают пациентов в клинике.
+
+Подскажите, у вас сейчас первичная коммуникация в мессенджерах с пациентами полностью вручную ведётся?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Первое касание Клиники" data-compliment="У вас аккуратно оформлена коммуникация с пациентами, поэтому вопрос именно про первичные обращения.">
+  <div class="card-header">
+    <h3>Стоматологии — короткое первое касание</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Первое</span><span class="tag">касание</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">Короткий вариант для быстрого сообщения.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас аккуратно оформлена коммуникация с пациентами, поэтому вопрос именно про первичные обращения.</div>
+  <div class="script-text">Добрый вечер.
+
+Подскажите, у вас администраторы сейчас сами вручную обрабатывают все сообщения пациентов в мессенджерах, или часть первичных обращений уже автоматизирована?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Если автоматизировано Клиники" data-compliment="Отлично, значит у вас уже есть системный подход к коммуникации с пациентами.">
+  <div class="card-header">
+    <h3>Стоматологии — если всё автоматизировано</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Если</span><span class="tag">автоматизировано</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">Проверить внерабочие обращения.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Отлично, значит у вас уже есть системный подход к коммуникации с пациентами.</div>
+  <div class="script-text">Поняла, спасибо. Тогда у вас уже хорошо выстроен процесс.
+
+Подскажите, а обращения пациентов, которые приходят вечером или вне рабочего времени, у вас тоже автоматически обрабатываются и доводятся до записи?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Диагностика Клиники" data-compliment="Спасибо, стало понятнее. Видно, что у вас много разных точек контакта с пациентами.">
+  <div class="card-header">
+    <h3>Стоматологии — диагностика нагрузки</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Диагностика</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">Выяснить, где у операторов больше всего нагрузки.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Спасибо, стало понятнее. Видно, что у вас много разных точек контакта с пациентами.</div>
+  <div class="script-text">Поняла, спасибо.
+
+Тогда подскажите, пожалуйста, по каким обращениям у операторов сейчас больше всего нагрузки: запись к врачу, перенос или отмена записи, вопросы по стоимости, подготовка к визиту или помощь с выбором специалиста?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Презентация решения Клиники" data-compliment="Это как раз тот участок, где можно сохранить качество сервиса и при этом разгрузить команду.">
+  <div class="card-header">
+    <h3>Стоматологии — объяснение решения</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Презентация</span><span class="tag">решения</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">AI снимает однотипные вопросы.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Это как раз тот участок, где можно сохранить качество сервиса и при этом разгрузить команду.</div>
+  <div class="script-text">Поняла. Как раз такие первичные обращения мы и автоматизируем с помощью AI-ассистента: чтобы операторы не тратили время на однотипные вопросы и подключались уже там, где действительно нужен живой специалист.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Стоматологии Презентация решения Клиники" data-compliment="У вас сфера, где важно не просто быстро ответить, а сохранить доверительный тон общения с пациентом.">
+  <div class="card-header">
+    <h3>Стоматологии — усиленная презентация решения</h3>
+    <div class="tags"><span class="tag">Стоматологии</span><span class="tag">Презентация</span><span class="tag">решения</span><span class="tag">Клиники</span></div>
+  </div>
+  <p class="goal">Более подробное объяснение задач AI.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас сфера, где важно не просто быстро ответить, а сохранить доверительный тон общения с пациентом.</div>
+  <div class="script-text">Поняла. Тогда здесь как раз может быть полезен AI-ассистент: он берёт на себя типовые первичные вопросы — запись, переносы, базовые уточнения по услугам, подготовке к визиту — и передаёт оператору уже те обращения, где действительно нужен живой специалист.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Блогер Партнёрство Первое касание" data-compliment="У вас очень живая подача и хорошо чувствуется контакт с аудиторией.">
+  <div class="card-header">
+    <h3>Блогер — партнёрское предложение</h3>
+    <div class="tags"><span class="tag">Блогер</span><span class="tag">Партнёрство</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">AI-помощник для подписчиков и рекламодателей.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> У вас очень живая подача и хорошо чувствуется контакт с аудиторией.</div>
+  <div class="script-text">Привет, [Имя]! Посмотрела твой блог: у тебя активная аудитория, и наверняка в директ приходят вопросы от подписчиков и рекламодателей.
 
 Мы можем бесплатно настроить AI-помощника, который:
 — выдаёт тренировку, чек-лист или гайд по кодовому слову;
@@ -415,19 +546,20 @@
 Воронка по кодовому слову помогает повышать охваты и увеличивать количество подписчиков. AI-помощник разгружает директ и помогает не терять рекламные запросы. Работаем по партнёрской программе, поэтому настройка AI-помощника для тебя бесплатна.
 
 Вам был бы интересен такой формат?</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-      <article class="card" data-tags="Блогер Амбассадор Первое касание">
-        <div class="card-header">
-          <h3>Блогер — амбассадор AI-агентов</h3>
-          <div class="tags">
-            <span class="tag">Блогер</span>
-            <span class="tag">Амбассадор</span>
-            <span class="tag">Первое касание</span>
-          </div>
-        </div>
-        <p class="goal">Цель: предложить блогеру бесплатный тест AI-агентов и партнёрский формат.</p>
-        <div class="script-text">Добрый день! Сейчас подбираем 2–3 амбассадоров в своей нише для запуска AI-агентов и увидели вас как одного из сильных кандидатов.
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Блогер Амбассадор Первое касание" data-compliment="Понравилось, как вы ведёте коммуникацию с аудиторией — подача выглядит живой и вовлекающей.">
+  <div class="card-header">
+    <h3>Блогер — амбассадор AI-агентов</h3>
+    <div class="tags"><span class="tag">Блогер</span><span class="tag">Амбассадор</span><span class="tag">Первое</span><span class="tag">касание</span></div>
+  </div>
+  <p class="goal">Бесплатный тест AI-агентов и партнёрский формат.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Понравилось, как вы ведёте коммуникацию с аудиторией — подача выглядит живой и вовлекающей.</div>
+  <div class="script-text">Добрый день! Сейчас подбираем 2–3 амбассадоров в своей нише для запуска AI-агентов и увидели вас как одного из сильных кандидатов.
 
 Суть формата: мы бесплатно настраиваем AI-менеджера, продюсерскую логику и воронку под ваш блог.
 
@@ -438,61 +570,99 @@ AI-помощник может отвечать подписчикам, выда
 Без обязательств: 30 дней тестируете на реальном процессе, потом решаете, интересно ли продолжать.
 
 Подходит обсудить формат в сообщениях? Если будет интересно — дальше согласуем короткий звонок.</div>
-        <div class="actions"><button class="copy-btn">Скопировать</button></div>
-      </article>
-    </section>
-    <div class="empty" id="emptyState">Ничего не найдено. Попробуйте другое слово.</div>
-  </main>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
 
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
-    const emptyState = document.getElementById('emptyState');
-    let activeFilter = 'Все';
-    function normalize(value) { return value.toLowerCase().replace(/ё/g, 'е'); }
-    function applyFilters() {
-      const query = normalize(searchInput.value.trim());
-      let visibleCount = 0;
-      cards.forEach((card) => {
-        const text = normalize(card.textContent);
-        const tags = normalize(card.dataset.tags || '');
-        const matchesSearch = !query || text.includes(query);
-        const matchesFilter = activeFilter === 'Все' || tags.includes(normalize(activeFilter));
-        const show = matchesSearch && matchesFilter;
-        card.style.display = show ? '' : 'none';
-        if (show) visibleCount += 1;
-      });
-      emptyState.style.display = visibleCount ? 'none' : 'block';
-    }
-    searchInput.addEventListener('input', applyFilters);
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach((btn) => btn.classList.remove('active'));
-        button.classList.add('active');
-        activeFilter = button.dataset.filter;
-        applyFilters();
-      });
-    });
-    document.querySelectorAll('.copy-btn').forEach((button) => {
-      button.addEventListener('click', async () => {
-        const card = button.closest('.card');
-        const text = card.querySelector('.script-text').innerText.trim();
-        try {
-          await navigator.clipboard.writeText(text);
-        } catch (error) {
-          const textarea = document.createElement('textarea');
-          textarea.value = text;
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand('copy');
-          textarea.remove();
-        }
-        const original = button.textContent;
-        button.textContent = 'Скопировано';
-        setTimeout(() => button.textContent = original, 1200);
-      });
-    });
-  </script>
+<article class="card" data-tags="Возражение Не актуально Универсальное" data-compliment="Понимаю, у вас может быть свой приоритет и уже выстроенный процесс.">
+  <div class="card-header">
+    <h3>Если не актуально</h3>
+    <div class="tags"><span class="tag">Возражение</span><span class="tag">Не</span><span class="tag">актуально</span><span class="tag">Универсальное</span></div>
+  </div>
+  <p class="goal">Мягко закрыть диалог и оставить возможность вернуться позже.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Понимаю, у вас может быть свой приоритет и уже выстроенный процесс.</div>
+  <div class="script-text">[Имя], поняла вас, спасибо.
+
+Тогда оставлю этот вопрос на будущее. Если позже станет актуально снизить ручную нагрузку по первичным обращениям или не терять заявки в нерабочее время, можно будет вернуться к обсуждению.</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+<article class="card" data-tags="Возражение Цена Универсальное" data-compliment="Хороший вопрос, лучше считать не абстрактно, а от вашей задачи и объёма обращений.">
+  <div class="card-header">
+    <h3>Если спрашивают цену</h3>
+    <div class="tags"><span class="tag">Возражение</span><span class="tag">Цена</span><span class="tag">Универсальное</span></div>
+  </div>
+  <p class="goal">Не называть цену в пустоту.</p>
+  <div class="compliment-preview"><b>Комплимент:</b> Хороший вопрос, лучше считать не абстрактно, а от вашей задачи и объёма обращений.</div>
+  <div class="script-text">Цена зависит от сценария: какие каналы подключаем, сколько обращений нужно обрабатывать и что должен делать AI-помощник.
+
+Чтобы не называть абстрактно, лучше коротко понять вашу задачу: вам актуальнее скорость первого ответа, повторные касания или запись клиента на консультацию/показ?</div>
+  <div class="actions">
+    <button class="copy-btn">Скопировать</button>
+    <button class="copy-compliment-btn">С комплиментом</button>
+  </div>
+</article>
+
+</section>
+<div class="empty" id="emptyState">Ничего не найдено. Попробуйте другой фильтр или слово.</div>
+</main>
+<script>
+const searchInput=document.getElementById('searchInput');
+const cards=Array.from(document.querySelectorAll('.card'));
+const buttons=Array.from(document.querySelectorAll('.filter-btn'));
+const emptyState=document.getElementById('emptyState');
+let activeFilter='Все';
+function normalize(value){return value.toLowerCase().replaceAll('ё','е')}
+function applyFilters(){
+  const query=normalize(searchInput.value.trim());
+  let visible=0;
+  cards.forEach(card=>{
+    const text=normalize(card.textContent);
+    const tags=normalize(card.dataset.tags||'');
+    const matchesSearch=!query||text.includes(query);
+    const matchesFilter=activeFilter==='Все'||tags.includes(normalize(activeFilter));
+    const show=matchesSearch&&matchesFilter;
+    card.style.display=show?'':'none';
+    if(show)visible+=1;
+  });
+  emptyState.style.display=visible?'none':'block';
+}
+searchInput.addEventListener('input',applyFilters);
+buttons.forEach(button=>{
+  button.addEventListener('click',()=>{
+    buttons.forEach(b=>b.classList.remove('active'));
+    button.classList.add('active');
+    activeFilter=button.dataset.filter;
+    applyFilters();
+  });
+});
+async function copyText(text,button){
+  try{await navigator.clipboard.writeText(text)}catch(e){
+    const area=document.createElement('textarea');
+    area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
+  }
+  const old=button.textContent;button.textContent='Скопировано';setTimeout(()=>button.textContent=old,1200);
+}
+document.querySelectorAll('.copy-btn').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const card=button.closest('.card');
+    const script=card.querySelector('.script-text').innerText.trim();
+    copyText(script,button);
+  });
+});
+document.querySelectorAll('.copy-compliment-btn').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const card=button.closest('.card');
+    const compliment=card.dataset.compliment.trim();
+    const script=card.querySelector('.script-text').innerText.trim();
+    copyText(compliment+'\n\n'+script,button);
+  });
+});
+</script>
 </body>
 </html>
